@@ -9,7 +9,7 @@
 
   <ng-container formArrayName="addresses">
     <ng-container *ngFor="let addressForm of addresses.controls">
-      <div style="display: flex; flex-direction: column;" [formGroup]="addressForm">
+      <div style="display: flex; flex-direction: column; margin-top: 1rem;" [formGroup]="addressForm">
         <label>Adress</label>
         <input placeholder="Adress" formControlName="adress"/>
       </div>
