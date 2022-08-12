@@ -10,6 +10,8 @@ export class AppComponent {
   title = 'ReactiveForms';
 
   testform: UntypedFormGroup;
+
+  addressesApiResponse: string[] = ["adresim 1", "adresim 2", "adresim 3", "adresim 4"];
   
   constructor(private ufb: UntypedFormBuilder) { }
 
@@ -23,6 +25,12 @@ export class AppComponent {
       password: ["", [Validators.required, Validators.min(5)]],
       addresses: this.ufb.array([]) 
     })
+
+    this.addressesApiResponse.forEach(adress => {
+      this.addresses.push(this.ufb.group({
+        adress: [adress, Validators.required]
+      }))
+    });
 
     this.testform.valueChanges.subscribe({
       next: (value) => {console.log(value)}
